@@ -31,6 +31,7 @@ public class XmlService {
 
     private static final String xmlFilePath = "src/main/resources/student-simple.xml";
     private static final String xstlFilePath = "src/main/resources/student-xml-html.xslt";
+    private static final String outputHtmlFileName = "output.html";
 
     private final ApplicationProperties applicationProperties;
 
@@ -98,7 +99,7 @@ public class XmlService {
 
             // transform xml to html via a xslt file
             try (FileOutputStream output =
-                         new FileOutputStream("c:\\test\\hello.html")) {
+                         new FileOutputStream(outputHtmlFileName)) {
                 transform(doc, output);
             }
 
