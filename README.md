@@ -2,6 +2,19 @@
 
 This repo is developed for analyze codeql scan results.
 
+## Vulnerable code results 
+| Vulnerability Type | File:line | CodeQL Result|
+| :---: | :---: | :---: |
+| XSS | CourseController:33 | true positive |
+| XXE | CourseController:43 | true positive |
+| XSS | hello.jsp:8 | false negative |
+
+## Not vulnerable results
+
+| Vulnerability Type | File:line | CodeQL Result|
+| :---: | :---: | :---: |
+| XXE | CourseController:54 | true negative |
+
 
 ## Results
 <img width="678" alt="resim" src="https://user-images.githubusercontent.com/17202632/160772791-9694bcb4-2345-48fe-bfd2-a44345039bf1.png">
