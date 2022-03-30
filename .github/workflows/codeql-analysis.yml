@@ -19,6 +19,9 @@ on:
     branches: [ main ]
   schedule:
     - cron: '24 16 * * 2'
+    
+env:
+  CODEQL_EXTRACTOR_JAVA_JSP: true
 
 jobs:
   analyze:
