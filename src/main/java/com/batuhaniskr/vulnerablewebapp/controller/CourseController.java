@@ -60,7 +60,6 @@ public class CourseController {
      */
     @GetMapping("/learning-file")
     public ResponseEntity<String> getLearning(@RequestParam("path") String path) throws IOException {
-        System.out.println(applicationProperties.getPath());
         if (!path.contains((applicationProperties.getPath()))) {
             return ResponseEntity.badRequest().body("Invalid path name");
         }

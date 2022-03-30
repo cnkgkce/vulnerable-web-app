@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloController {
 
     /**
-     * vulnerable xss payload for jsp
+     * xss example for jsp
      * @param model
      * @param name
      * @return
