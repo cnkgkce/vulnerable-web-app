@@ -12,6 +12,7 @@
 name: "CodeQL"
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -19,6 +20,9 @@ on:
     branches: [ main ]
   schedule:
     - cron: '24 16 * * 2'
+    
+env:
+  CODEQL_EXTRACTOR_JAVA_JSP: true
 
 jobs:
   analyze:
@@ -49,6 +53,8 @@ jobs:
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
+        queries: +advanced-security/codeql-queries/java/CWE-079/XSSJSP.ql@main,
+                 github/codeql/java/ql/src/experimental/Security/CWE/CWE-073/FilePathInjection.ql@main
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
@@ -68,3 +74,6 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+      with:
+        # To help with mapping files
+        add-snippets: true
