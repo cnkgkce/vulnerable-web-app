@@ -9,7 +9,7 @@ This repo is developed for analyze codeql scan results.
 | XXE | CourseController:43 | true positive |
 | XSS | hello.jsp:8 | false negative |
 
-## Not vulnerable results
+## Not vulnerable code results
 
 | Vulnerability Type | File:line | CodeQL Result|
 | :---: | :---: | :---: |
