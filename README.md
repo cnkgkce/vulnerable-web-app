@@ -5,15 +5,15 @@ This repo is developed for analyze codeql scan results.
 ## Vulnerable code results 
 | Vulnerability Type | File:line | CodeQL Result|
 | :---: | :---: | :---: |
-| XSS | CourseController:33 | true positive |
-| XXE | CourseController:43 | true positive |
-| XSS | hello.jsp:8 | false negative |
-
+| XSS | CourseController:33 | :ballot_box_with_check: true positive |
+| XXE | CourseController:43 | :ballot_box_with_check: true positive |
+| XSS | hello.jsp:8 | :x: false negative |
+| Path Manipulation | CourseController:67 | :x: false negative |
 ## Not vulnerable code results
 
 | Vulnerability Type | File:line | CodeQL Result|
 | :---: | :---: | :---: |
-| XXE | CourseController:54 | true negative |
+| XXE | CourseController:54 | :ballot_box_with_check: true negative |
 
 
 ## Results
