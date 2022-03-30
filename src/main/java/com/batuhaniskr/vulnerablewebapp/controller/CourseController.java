@@ -6,13 +6,13 @@ import com.batuhaniskr.vulnerablewebapp.service.XmlService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Controller
+@RequestMapping("/course")
 public class CourseController {
 
     private final XmlService xmlService;
@@ -29,8 +29,8 @@ public class CourseController {
      * @param name
      * @return
      */
-    @GetMapping("/name")
-    public ResponseEntity<String> getCourse(@RequestParam("name") String name){
+    @GetMapping("/{id}")
+    public ResponseEntity<String> getCourse(@PathVariable("id") Integer id, @RequestParam("name") String name){
         return ResponseEntity.ok(name);
     }
 
@@ -39,10 +39,20 @@ public class CourseController {
      * @param name
      * @return
      */
-    @GetMapping("/course-details")
+    @GetMapping("/details")
     public ResponseEntity<String> createCourse(@RequestParam("url") String name){
-        Course course = xmlService.parseCourse(name);
+        Course course = xmlService.getCourse(name);
         return ResponseEntity.ok(course.getTitle());
+    }
+
+    /**
+     * Reading local xml file and transform to html
+     * @return
+     */
+    @GetMapping("/generate-html")
+    public ResponseEntity<String> generateHtml() {
+        xmlService.toHtml();
+        return ResponseEntity.ok("ok");
     }
 
     /**

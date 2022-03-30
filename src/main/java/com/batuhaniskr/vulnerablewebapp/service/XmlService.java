@@ -1,5 +1,6 @@
 package com.batuhaniskr.vulnerablewebapp.service;
 
+import com.batuhaniskr.vulnerablewebapp.config.ApplicationProperties;
 import com.batuhaniskr.vulnerablewebapp.model.Course;
 import com.batuhaniskr.vulnerablewebapp.model.Student;
 import org.slf4j.Logger;
@@ -9,9 +10,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +29,18 @@ import java.util.List;
 @Service
 public class XmlService {
 
+    private static final String xmlFilePath = "src/main/resources/student-simple.xml";
+    private static final String xstlFilePath = "src/main/resources/student-xml-html.xslt";
+
+    private final ApplicationProperties applicationProperties;
+
+    public XmlService(ApplicationProperties applicationProperties) {
+        this.applicationProperties = applicationProperties;
+    }
+
     private final Logger logger = LoggerFactory.getLogger(XmlService.class);
 
-    public Course parseCourse(String url) {
+    public Course getCourse(String url) {
         Course course = null;
 
         try {
@@ -67,4 +86,35 @@ public class XmlService {
         }
         return course;
     }
+
+    public void toHtml() {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try (InputStream is = new FileInputStream(xmlFilePath)) {
+
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            Document doc = db.parse(is);
+
+            // transform xml to html via a xslt file
+            try (FileOutputStream output =
+                         new FileOutputStream("c:\\test\\hello.html")) {
+                transform(doc, output);
+            }
+
+        } catch (IOException | ParserConfigurationException |
+                SAXException | TransformerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void transform(Document doc, FileOutputStream output) throws TransformerException {
+            var transformerFactory = TransformerFactory.newInstance();
+
+            // add XSLT in Transformer
+            Transformer transformer = transformerFactory.newTransformer(
+                    new StreamSource(new File(xstlFilePath)));
+
+            transformer.transform(new DOMSource(doc), new StreamResult(output));
+        }
 }

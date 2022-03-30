@@ -11,7 +11,7 @@ public class ApplicationProperties {
 
     private String path;
 
-    public String getPath() {
+       public String getPath() {
         return path;
     }
 

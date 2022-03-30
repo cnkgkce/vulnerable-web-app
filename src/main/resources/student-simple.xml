@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<school>
+    <student id="1001">
+        <name>ali</name>
+        <surname>veli</surname>
+    </student>
+    <student id="1002">
+        <name>adem</name>
+        <surname>ali</surname>
+    </student>
+</school>
