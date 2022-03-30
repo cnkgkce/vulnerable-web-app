@@ -32,3 +32,9 @@ Parsing user-controlled XML reosurce
 <img width="833" alt="resim" src="https://user-images.githubusercontent.com/17202632/160774850-f57e1c54-5d25-4c87-afda-af6f58cb2cd2.png">
 <img width="767" alt="resim" src="https://user-images.githubusercontent.com/17202632/160774987-e3f41eed-475b-4742-9900-494c74751d04.png">
 
+Cross-site scripting for jsp file
+
+<img width="726" alt="resim" src="https://user-images.githubusercontent.com/17202632/160783737-3044ff8b-9cf2-47c6-8b60-64eb665be481.png">
+<img width="446" alt="resim" src="https://user-images.githubusercontent.com/17202632/160783792-de4c94f0-1a84-424f-bdd7-55f888016e70.png">
+
+
