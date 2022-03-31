@@ -1,6 +1,7 @@
 package com.batuhaniskr.vulnerablewebapp.controller;
 
 import com.batuhaniskr.vulnerablewebapp.config.ApplicationProperties;
+import com.batuhaniskr.vulnerablewebapp.controller.request.Lecture;
 import com.batuhaniskr.vulnerablewebapp.model.Course;
 import com.batuhaniskr.vulnerablewebapp.service.XmlService;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,16 @@ public class CourseController {
     public CourseController(XmlService xmlService, ApplicationProperties applicationProperties) {
         this.xmlService = xmlService;
         this.applicationProperties = applicationProperties;
+    }
+
+    /**
+     * Test for spring4Shell vulnerability
+     * @param lecture
+     * @return
+     */
+    @PostMapping("/lecture")
+    public ResponseEntity<String> saveCourse(@RequestBody Lecture lecture){
+        return ResponseEntity.ok("test");
     }
 
     /**
