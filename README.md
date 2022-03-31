@@ -7,8 +7,8 @@ This repo is developed for analyze codeql scan results.
 | :---: | :---: | :---: |
 | XSS | CourseController:33 | :ballot_box_with_check: true positive |
 | XXE | CourseController:43 | :ballot_box_with_check: true positive |
-| XSS | hello.jsp:8 | :x: false negative |
-| Path Manipulation | CourseController:67 | :x: false negative |
+| XSS | hello.jsp:8 | :ballot_box_with_check: false negative |
+| Path Manipulation | CourseController:67 | :ballot_box_with_check: false negative |
 ## Not vulnerable code results
 
 | Vulnerability Type | File:line | CodeQL Result|
