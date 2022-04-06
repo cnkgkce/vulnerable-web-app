@@ -3,17 +3,17 @@
 This repo is developed for analyze codeql scan results.
 
 ## Vulnerable code results 
-| Vulnerability Type | File:line | CodeQL Result|
-| :---: | :---: | :---: |
-| XSS | CourseController:33 | :ballot_box_with_check: true positive |
-| XXE | CourseController:43 | :ballot_box_with_check: true positive |
-| XSS | hello.jsp:8 | :ballot_box_with_check: false negative |
-| Path Manipulation | CourseController:67 | :ballot_box_with_check: false negative |
+| Vulnerability Type | File:line | CodeQL | Fortify
+| :---: | :---: | :---: | :---: | 
+| XSS | CourseController:33 | :ballot_box_with_check: true positive | :x: false negative
+| XXE | CourseController:43 | :ballot_box_with_check: true positive | :ballot_box_with_check: true positive
+| XSS | hello.jsp:8 | :ballot_box_with_check: false negative | :x: false positive
+| Path Manipulation | CourseController:67 | :ballot_box_with_check: false negative | :x: false negative
 ## Not vulnerable code results
 
-| Vulnerability Type | File:line | CodeQL Result|
-| :---: | :---: | :---: |
-| XXE | CourseController:54 | :ballot_box_with_check: true negative |
+| Vulnerability Type | File:line | CodeQL | Fortify |
+| :---: | :---: | :---: | :---: |
+| XXE | CourseController:54 | :ballot_box_with_check: true negative | :x: false positive
 
 
 ## Results
