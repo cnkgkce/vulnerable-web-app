@@ -1,6 +1,6 @@
 # vulnerable-web-app
 
-This repo is developed for analyze codeql scan results.
+This repo is developed for comparing codeql and fortify scan results.
 
 ## Vulnerable code results 
 | Vulnerability Type | File:line | CodeQL | Fortify
