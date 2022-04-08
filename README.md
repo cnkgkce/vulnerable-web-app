@@ -8,7 +8,7 @@ This repo is developed for comparing codeql and fortify scan results.
 | XSS | CourseController:33 | :ballot_box_with_check: true positive | :x: false negative
 | XXE | CourseController:43 | :ballot_box_with_check: true positive | :ballot_box_with_check: true positive
 | XSS | hello.jsp:8 | :ballot_box_with_check: true negative |:ballot_box_with_check: true negative
-| Path Manipulation | CourseController:67 | :ballot_box_with_check: true positive | :ballot_box_with_check: false negative
+| Path Manipulation | CourseController:67 | :ballot_box_with_check: true positive | :x: false negative
 ## Not vulnerable code results
 
 | Vulnerability Type | File:line | CodeQL | Fortify |
