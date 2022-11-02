@@ -16,7 +16,7 @@ This repo is developed for comparing codeql and fortify scan results.
 | XXE | CourseController:54 | :ballot_box_with_check: true negative | :x: false positive
 
 
-## Results
+## Results 
 <img width="678" alt="resim" src="https://user-images.githubusercontent.com/17202632/160772791-9694bcb4-2345-48fe-bfd2-a44345039bf1.png">
 
 ## Vulnerabilities
