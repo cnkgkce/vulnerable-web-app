@@ -2,4 +2,4 @@ steps:
   - name: Run Dastardly Action Step
     uses: PortSwigger/dastardly-github-action@main
     with:
-      target-url: 'http://testphp.vulnweb.com/'
+      target-url: 'https://ginandjuice.shop'
