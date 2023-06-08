@@ -22,13 +22,16 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class XmlService {
 
+    public static final String CODE_CHARACTERS = "ABCEDF";
     private static final String xmlFilePath = "src/main/resources/student-simple.xml";
     private static final String xstlFilePath = "src/main/resources/student-xml-html.xslt";
     private static final String outputHtmlFileName = "output.html";
@@ -111,6 +114,7 @@ public class XmlService {
 
     private void transform(Document doc, FileOutputStream output) throws TransformerException {
             var transformerFactory = TransformerFactory.newInstance();
+            generateRandomCode(Instant.now().toString());
 
             // add XSLT in Transformer
             Transformer transformer = transformerFactory.newTransformer(
@@ -118,4 +122,16 @@ public class XmlService {
 
             transformer.transform(new DOMSource(doc), new StreamResult(output));
         }
+
+    public static String generateRandomCode(String parameter) {
+        SecureRandom random = new SecureRandom(parameter.getBytes());
+        random.setSeed(parameter.getBytes());
+        StringBuilder sb = new StringBuilder();
+
+        int randomIndex = random.nextInt(CODE_CHARACTERS.length());
+        char randomChar = CODE_CHARACTERS.charAt(randomIndex);
+        sb.append(randomChar);
+
+        return sb.toString();
+    }
 }
