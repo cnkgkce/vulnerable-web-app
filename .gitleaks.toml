@@ -1,0 +1,16 @@
+title = "vulnerable-web-app secret scan rules"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "application-properties-credential-assignment"
+description = "Hardcoded credential assignment in application.properties"
+regex = '''(?i)^(?:mvn_user_password|srv_cengo_pass|ark_service_user|srv_apache_user)\s*=\s*(?!\$\{[A-Z0-9_]+\})[^\s#]+'''
+path = '''src/main/resources/application\.properties'''
+
+[[rules]]
+id = "generic-password-property"
+description = "Generic password/key/token assignment with non-placeholder value"
+regex = '''(?i)^[A-Za-z0-9_.-]*(?:password|passwd|secret|token|api[-_]?key)[A-Za-z0-9_.-]*\s*=\s*(?!\$\{[A-Z0-9_]+\})[^\s#]+'''
+path = '''.*\.properties'''
